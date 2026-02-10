@@ -6,6 +6,7 @@ var score = 0;
 score_box.innerText = score;
 var time = 30;
 
+
 //COLORS
 var colors = [
   "red",
@@ -17,6 +18,7 @@ var colors = [
   "indigo",
   "lime",
 ];
+
 
 //For UI Change Color
 function update_UI_colors() {
@@ -52,9 +54,9 @@ function click_handler(event) {
     score++;
     score_box.innerText = score;
 
+    time = time + 1;
     time++;
 
-    // time = time + 1;
     time_left.innerText = time;
   } else {
     score--;
@@ -74,7 +76,7 @@ function time_out() {
     time = -1;
   }
 }
-setInterval(time_out, 999);
+setInterval(time_out, 500);
 time_out();
 
 //LOOP FOR CREATE BOXES
