@@ -1,8 +1,10 @@
 var parent = document.getElementById("parent");
 var match_box = document.getElementById("match_box");
 var score_box = document.getElementById("score");
+var time_left = document.getElementById("score_point");
 var score = 0;
 score_box.innerText = score;
+var time = 30;
 
 //COLORS
 var colors = [
@@ -11,11 +13,8 @@ var colors = [
   "green",
   "yellow",
   "orange",
-  "grey",
-  "white",
   "aqua",
   "indigo",
-  "violet",
   "lime",
 ];
 
@@ -35,7 +34,6 @@ function update_UI_colors() {
     temporary_colors.splice(random_color, 1);
   }
 }
-
 //Generate Random Colors
 function random_colors() {
   var random_color = Math.floor(Math.random() * colors.length);
@@ -53,6 +51,11 @@ function click_handler(event) {
   if (clicked_color.style.backgroundColor === match_box.style.backgroundColor) {
     score++;
     score_box.innerText = score;
+
+    time++;
+
+    // time = time + 1;
+    time_left.innerText = time;
   } else {
     score--;
     score_box.innerText = score;
@@ -61,6 +64,18 @@ function click_handler(event) {
   match_box.style.backgroundColor = random_colors();
   update_UI_colors();
 }
+//TIME OUT
+function time_out() {
+  if (time > 0) {
+    time--;
+    time_left.innerText = time;
+  } else if (time == 0) {
+    alert("Game Over");
+    time = -1;
+  }
+}
+setInterval(time_out, 999);
+time_out();
 
 //LOOP FOR CREATE BOXES
 for (var i = 1; i < 9; i++) {
