@@ -2,6 +2,7 @@ var parent = document.getElementById("parent");
 var match_box = document.getElementById("match_box");
 var score_box = document.getElementById("score");
 var time_left = document.getElementById("score_point");
+
 var score = 0;
 score_box.innerText = score;
 var time = 30;
@@ -90,4 +91,19 @@ for (var i = 1; i < 9; i++) {
   // EVENT LISTENER
   div_box.addEventListener("click", click_handler);
   parent.appendChild(div_box);
+}
+
+
+
+function reset(){
+  
+
+  update_UI_colors();
+  match_box.style.backgroundColor = random_colors();
+  score = 0;
+  score_box.innerText = score;
+  time = 30;
+  time_left.innerText = time;
+
+
 }
